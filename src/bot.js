@@ -20,7 +20,6 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-const faker = ["cum", "contol"];
 const PREFIX = "!";
 
 //detector
@@ -39,7 +38,7 @@ client.on("message", (message) => {
             const board = ["PK LEADERBOARD"];
 
             documents.map((doc, index) => {
-              board.push(`#${index + 1}  <@${doc.dcId}>`);
+              board.push(`#${index + 1}  <@${doc.dcId}>(${doc.count})`);
             });
 
             message.channel.send(board.join("\n"));
