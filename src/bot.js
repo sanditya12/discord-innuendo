@@ -3,6 +3,8 @@
 const User = require("../models/user");
 const Keyword = require("../models/keyword");
 
+const linkKelas = require("./data");
+
 const { Client } = require("discord.js");
 const client = new Client();
 
@@ -43,6 +45,13 @@ client.on("message", (message) => {
 
             message.channel.send(board.join("\n"));
           });
+        break;
+      case "link":
+        const printedLinks = ["Link Kelas"];
+        linkKelas.map((link) => {
+          printedLinks.push(`[${link.mask}](${link.url})`);
+        });
+        message.channel.send(printedLinks.join("\n"));
     }
   }
 
