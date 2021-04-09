@@ -47,11 +47,20 @@ client.on("message", (message) => {
           });
         break;
       case "link":
-        const printedLinks = ["Link Kelas"];
+        const printedLinks = [];
         linkKelas.map((link) => {
           printedLinks.push(`[${link.mask}](${link.url})`);
         });
-        message.channel.send(printedLinks.join("\n"));
+        const printed = printedLinks.join("\n");
+        message.channel.send({
+          embed: {
+            color: 12745742,
+            title: "Link Kelas",
+            description: printed,
+            footer: { text: "jangan skip kelas!" },
+          },
+        });
+        break;
     }
   }
 
